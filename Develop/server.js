@@ -14,6 +14,17 @@ app.use(express.json());
 
 
 
+//HTML Routing
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, '/public/index.html'));
+    console.log("hello index")
+});
+app.get('/notes', function (req, res) {
+    res.sendFile(path.join(__dirname, '/public/notes.html'));
+    console.log("hello notes")
+});
+
+
 
 
 
