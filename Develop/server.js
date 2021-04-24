@@ -1,6 +1,7 @@
 // Dependencies
 const express = require('express');
 const path = require('path');
+const notes= require ('./db/db.json');
 
 
 // Sets up the Express App
