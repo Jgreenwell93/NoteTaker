@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const apiRoutes=require('./routing/api')
 
 
 // Sets up the Express App
@@ -13,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
+app.use('/api',apiRoutes);
 
 
 //HTML Routing
@@ -24,29 +26,6 @@ app.get('/notes', function (req, res) {
     res.sendFile(path.join(__dirname, '/public/notes.html'));
     console.log("hello notes")
 });
-
-
-//API Routing
-app.post('/api/notes', (req, res) => {
-    const newNote = req.body;
-    newNote.id = 2;
-    notes.push(newNote);
-    return res.json(newNote);
-})
-
-app.get('/api/notes', (req, res) => res.json(notes));
-
-app.delete('/api/notes/:id', (req, res) => {
-    const id = req.params.id
-    for(var i=0; i<notes.length; i++){
-        if(notes[i].id == id) {
-            notes.splice(i,1);
-            break;
-        }
-    }
-    return res.json(notes)
-})
-
 
 
 
