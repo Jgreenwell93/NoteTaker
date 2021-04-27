@@ -8,7 +8,7 @@ const { uuid } = require('uuidv4');
 router.get('/notes', (req, res) =>{
     // let allnotes=fs.readFileSync(path.join(__dirname,'/../db/db.json'),'utf8');
     // console.log(allnotes);
-    return res.json(notes)
+    res.json(notes)
 });
 
 router.post('/notes', (req, res) => {
@@ -18,7 +18,7 @@ router.post('/notes', (req, res) => {
     allnotes = JSON.parse(allnotes)
     allnotes.push(newNote);
     fs.writeFileSync(path.join(__dirname,'/../db/db.json'),JSON.stringify(allnotes));
-    return res.json(allnotes);
+    res.json(allnotes);
 })
 
 
